@@ -76,11 +76,11 @@ public class InclusaoController {
 	private Button btnEscolherFacul;
 
 	@FXML
-    private TextField txtSobrenome;
+	private TextField txtSobrenome;
 
-    @FXML
-    private TextField txtIdade;
-	
+	@FXML
+	private TextField txtIdade;
+
 	@FXML
 	private TextArea txtAreaNumeros;
 
@@ -180,8 +180,12 @@ public class InclusaoController {
 	@FXML
 	void finalizarInclusao(ActionEvent event) {
 		try {
-			if (txtNome.getText().isEmpty() || pessoa.getFacul() == null || pessoa.getTelefones().size() == 0)
+			if (txtNome.getText().isEmpty() || pessoa.getFacul() == null || pessoa.getTelefones().size() == 0
+					|| txtSobrenome.getText().isEmpty() || txtIdade.getText().isEmpty()) {
 				throw new InvalidParameterSpecException("Preencha todas as informações");
+			} else if(pessoa.getFacul().getNome().isEmpty()) {
+				throw new InvalidParameterSpecException("Preencha todas as informações");
+			}
 			pessoa.setNome(txtNome.getText());
 			pessoa.setSobrenome(txtSobrenome.getText());
 			pessoa.setIdade(Integer.parseInt(txtIdade.getText()));

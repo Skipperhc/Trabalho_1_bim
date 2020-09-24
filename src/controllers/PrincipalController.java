@@ -54,12 +54,25 @@ public class PrincipalController {
 	@FXML
 	private TextField txtIdGeral;
 
+	@FXML
+	private Button btnSair;
+	
+	@FXML
+    void sair(ActionEvent event) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Até mais");
+		alert.setHeaderText("Saindo...");
+		alert.setContentText("");
+		alert.showAndWait();
+		principalStage.close();
+    }
+
 	private void atualizar() {
 		txtArea.setText("");
 		int posicao = 0;
 		for (Pessoa p : Banco.getListaPessoas()) {
 			posicao++;
-			txtArea.setText(txtArea.getText() + " posição:" + posicao + " - " + p + "\n");
+			txtArea.setText(txtArea.getText() + " Posição:" + posicao + " - " + p + "\n");
 		}
 	}
 
@@ -74,13 +87,12 @@ public class PrincipalController {
 				ArrayList<Pessoa> listaDeIds = new ArrayList<Pessoa>();
 				for (Pessoa p : Banco.getListaPessoas()) {
 					if (p.getCod() == id) {
-						System.out.println("ueee");
 						listaDeIds.add(p);
 					}
 				}
 				txtArea.setText("");
 				for (int i = 0; i < listaDeIds.size(); i++) {
-					txtArea.setText(txtArea.getText() + " Posição: " + i + " - " + listaDeIds.get(i) + "\n");
+					txtArea.setText(txtArea.getText() + " Posição: " + (i + 1) + " - " + listaDeIds.get(i) + "\n");
 				}
 			}
 		} catch (Exception e) {

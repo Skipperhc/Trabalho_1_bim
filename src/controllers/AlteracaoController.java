@@ -105,7 +105,8 @@ public class AlteracaoController {
 
 	@FXML
 	void cancelar(ActionEvent event) {
-
+		alteracaoStage.close();
+		PrincipalController.getPrincipalStage().show();
 	}
 
 	private boolean numeroExiste(String numero) {
@@ -172,28 +173,34 @@ public class AlteracaoController {
 	@FXML
 	void escolherFacul(ActionEvent event) {
 		try {
-			
-		ChoiceDialog<String> cd = new ChoiceDialog<String>("", "Unibrasil", "Uniandrade", "UTFPR", "Americanas",
-				"Universidade do seu zéca");
-		cd.setContentText("Selecione uma faculdade");
-		cd.setHeaderText("");
-		cd.showAndWait();
-		if(cd.getResult().equals("")) throw new InvalidParameterSpecException("Nenhuma faculdade escolhida");
-		pessoa.setFacul(new Faculdade(cd.getResult()));
-		btnEscolherFacul.setText(cd.getResult());
+			ChoiceDialog<String> cd = new ChoiceDialog<String>("", "Unibrasil", "Uniandrade", "UTFPR", "Americanas",
+					"Universidade do seu zéca");
+			cd.setContentText("Selecione uma faculdade");
+			cd.setHeaderText("");
+			cd.showAndWait();
+			if (cd.getResult().equals("")) {
+				System.out.println(cd.getResult() + "saasdasd");
+				throw new InvalidParameterSpecException("Nenhuma faculdade escolhida");
+			}
+			pessoa.setFacul(new Faculdade(cd.getResult()));
+			btnEscolherFacul.setText(cd.getResult());
 		} catch (Exception e) {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Aviso");
 			alert.setHeaderText("Escolha uma das faculdades");
 			alert.setContentText("");
+			alert.showAndWait();
 		}
 	}
 
 	@FXML
 	void finalizarAlteracao(ActionEvent event) {
 		try {
-			if(txtIdade.getText().equals("") || txtNome.getText().equals("") || txtSobrenome.getText().equals("")) {
-				throw new InvalidParameterSpecException("Preencha todos os campos");
+			if (txtNome.getText().isEmpty() || txtSobrenome.getText().isEmpty() || txtIdade.getText().isEmpty() || pessoa.getFacul() == null
+					|| pessoa.getTelefones().size() == 0) {
+				throw new InvalidParameterSpecException("Preencha todas as informações");
+			} else if (pessoa.getFacul().getNome().equals("")) {
+				throw new InvalidParameterSpecException("Preencha todas as informações");
 			}
 			for (int i = 0; i < Banco.getListaPessoas().size(); i++) {
 				if (Banco.getListaPessoas().get(i).getCod() == pessoa.getCod()) {
@@ -223,7 +230,8 @@ public class AlteracaoController {
 			alert.setTitle("Erro na alteração");
 			alert.setHeaderText("");
 			alert.setContentText(e.getMessage());
-			alert.showAndWait();		}
+			alert.showAndWait();
+		}
 	}
 
 	private void atualizar() {

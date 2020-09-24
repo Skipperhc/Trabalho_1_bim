@@ -8,12 +8,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PrincipalController">
    <children>
-      <Button fx:id="btnPesquisar" layoutX="217.0" layoutY="31.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="46.0" prefWidth="82.0" text="Pesquisar" />
+      <Button fx:id="btnPesquisar" layoutX="131.0" layoutY="31.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="46.0" prefWidth="82.0" text="Pesquisar" />
       <Button fx:id="btnIncluir" layoutX="315.0" layoutY="31.0" mnemonicParsing="false" onAction="#incluir" prefHeight="46.0" prefWidth="82.0" text="Incluir" />
       <Button layoutX="411.0" layoutY="31.0" mnemonicParsing="false" onAction="#excluir" prefHeight="46.0" prefWidth="82.0" text="Excluir" />
-      <Button fx:id="btnAlterar" layoutX="504.0" layoutY="31.0" mnemonicParsing="false" onAction="#alterar" prefHeight="46.0" prefWidth="82.0" text="Alterar" />
+      <Button fx:id="btnAlterar" layoutX="224.0" layoutY="31.0" mnemonicParsing="false" onAction="#alterar" prefHeight="46.0" prefWidth="82.0" text="Alterar" />
       <TextArea fx:id="txtArea" layoutX="11.0" layoutY="112.0" prefHeight="287.0" prefWidth="575.0" wrapText="true" />
-      <TextField fx:id="txtIdGeral" layoutX="56.0" layoutY="41.0" />
+      <TextField fx:id="txtIdGeral" layoutX="56.0" layoutY="41.0" prefHeight="25.0" prefWidth="64.0" />
       <Label layoutX="28.0" layoutY="45.0" text="id" />
+      <Button fx:id="btnSair" layoutX="504.0" layoutY="31.0" mnemonicParsing="false" onAction="#sair" prefHeight="46.0" prefWidth="82.0" text="Sair" />
    </children>
 </AnchorPane>
