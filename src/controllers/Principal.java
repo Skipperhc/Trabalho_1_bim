@@ -22,6 +22,7 @@ public class Principal extends Application  {
 			AnchorPane root = FXMLLoader.load(getClass().getResource("../views/TelaPrincipal.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("Trabalho 1 bimestre");
 			primaryStage.show();
 			PrincipalController.setPrincipalStage(primaryStage);
 		} catch(Exception e) {
