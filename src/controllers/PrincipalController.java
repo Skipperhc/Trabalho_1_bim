@@ -61,7 +61,7 @@ public class PrincipalController {
     void sair(ActionEvent event) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Até mais");
-		alert.setHeaderText("Saindo...");
+		alert.setHeaderText("Encerrando...");
 		alert.setContentText("");
 		alert.showAndWait();
 		principalStage.close();
